@@ -2,6 +2,7 @@ function calculateCGPA() {
     const subjects = [];
     const subjectInputs = document.querySelectorAll('.subject-input');
 
+    // Collect subject details
     subjectInputs.forEach((input, index) => {
         const name = input.querySelector('.subject-name').value.trim();
         const credit = parseInt(input.querySelector('.subject-credit').value);
@@ -12,6 +13,7 @@ function calculateCGPA() {
         }
     });
 
+    // Calculate CGPA
     let totalCreditPoints = 0;
     let totalCredits = 0;
 
@@ -25,17 +27,37 @@ function calculateCGPA() {
             totalCredits += credit;
         }
 
+        // Display the calculated grade
         document.getElementById(`subject${subject.index + 1}Grade`).textContent = grade;
     });
 
     const cgpa = totalCredits === 0 ? 0 : totalCreditPoints / totalCredits;
     document.getElementById("cgpa").textContent = cgpa.toFixed(2);
 
+    // Determine the class of the student
     const studentClass = determineClass(cgpa);
     document.getElementById("studentClass").textContent = studentClass;
+
+    // Display the class section
     document.getElementById("classSection").style.display = "block";
 }
 
+// Function to determine the class based on CGPA
+function determineClass(cgpa) {
+    if (cgpa >= 3.5) {
+        return "First Class";
+    } else if (cgpa >= 3.0) {
+        return "Second Class Upper";
+    } else if (cgpa >= 2.0) {
+        return "Second Class Lower";
+    } else if (cgpa >= 1.0) {
+        return "Third Class";
+    } else {
+        return "Fail";
+    }
+}
+
+// Function to calculate the grade based on the score
 function calculateGrade(score) {
     const gradeScale = [
         { score: 75, grade: 'A1' },
@@ -57,6 +79,7 @@ function calculateGrade(score) {
     return "-";
 }
 
+// Function to get grade point based on the grade
 function getGradePoint(grade) {
     const gradeScale = {
         'A1': 4.0,
@@ -70,18 +93,4 @@ function getGradePoint(grade) {
         'F9': 0.0
     };
     return gradeScale[grade] || 0.0;
-}
-
-function determineClass(cgpa) {
-    if (cgpa >= 3.5) {
-        return "First Class";
-    } else if (cgpa >= 3.0) {
-        return "Second Class Upper";
-    } else if (cgpa >= 2.0) {
-        return "Second Class Lower";
-    } else if (cgpa >= 1.0) {
-        return "Third Class";
-    } else {
-        return "Fail";
-    }
 }
