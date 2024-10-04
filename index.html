@@ -1,84 +1,66 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CGPA Calculator</title>
-    <link rel="shortcut icon" href="Eagletech.ico" type="image/x-icon" />
-    <link rel="stylesheet" href="styles.css" />
-  </head>
-  <body>
-    <header>
-      <img src="EagleTech.png" alt="EagleTech Logo" class="logo" />
-      <h1>Welcome to the CGPA Calculator</h1>
-      <p>Calculate your CGPA easily!</p>
-    </header>
-    <nav>
-      <a href="#home">Home</a>
-      <a href="#cgpa">CGPA</a>
-    </nav>
-    <section id="cgpa" class="py-5">
-      <div class="container">
-        <h2 class="text-center mb-4">CGPA Calculation</h2>
-        <label for="creditHours">Enter Credit Hours, Actual Score, and Grade for Each Subject:</label>
-        <div class="subject-inputs">
-          <div class="subject-input">
-            <input type="text" class="subject-name" placeholder="Subject 1" />
-            <input type="number" class="subject-credit" placeholder="Credit Hours" min="1" />
-            <input type="number" class="subject-score" placeholder="Actual Score" step="0.01" />
-            <span class="subject-grade" id="subject1Grade">-</span>
-          </div>
-          <div class="subject-input">
-            <input type="text" class="subject-name" placeholder="Subject 2" />
-            <input type="number" class="subject-credit" placeholder="Credit Hours" min="1" />
-            <input type="number" class="subject-score" placeholder="Actual Score" step="0.01" />
-            <span class="subject-grade" id="subject2Grade">-</span>
-          </div>
-          <div class="subject-input">
-            <input type="text" class="subject-name" placeholder="Subject 3" />
-            <input type="number" class="subject-credit" placeholder="Credit Hours" min="1" />
-            <input type="number" class="subject-score" placeholder="Actual Score" step="0.01" />
-            <span class="subject-grade" id="subject3Grade">-</span>
-          </div>
-          <div class="subject-input">
-            <input type="text" class="subject-name" placeholder="Subject 4" />
-            <input type="number" class="subject-credit" placeholder="Credit Hours" min="1" />
-            <input type="number" class="subject-score" placeholder="Actual Score" step="0.01" />
-            <span class="subject-grade" id="subject4Grade">-</span>
-          </div>
-          <div class="subject-input">
-            <input type="text" class="subject-name" placeholder="Subject 5" />
-            <input type="number" class="subject-credit" placeholder="Credit Hours" min="1" />
-            <input type="number" class="subject-score" placeholder="Actual Score" step="0.01" />
-            <span class="subject-grade" id="subject5Grade">-</span>
-          </div>
-          <div class="subject-input">
-            <input type="text" class="subject-name" placeholder="Subject 6" />
-            <input type="number" class="subject-credit" placeholder="Credit Hours" min="1" />
-            <input type="number" class="subject-score" placeholder="Actual Score" step="0.01" />
-            <span class="subject-grade" id="subject6Grade">-</span>
-          </div>
-          <div class="subject-input">
-            <input type="text" class="subject-name" placeholder="Subject 7" />
-            <input type="number" class="subject-credit" placeholder="Credit Hours" min="1" />
-            <input type="number" class="subject-score" placeholder="Actual Score" step="0.01" />
-            <span class="subject-grade" id="subject7Grade">-</span>
-          </div>
-          <!-- Add more subjects as needed -->
+    
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="wrapper">
+        <img class="content-img" src="images/logo.png" alt="Eagletech_Logo..">
+        <h1>CGPA Calculator</h1>
+        <div class="form-row">
+            <div class="col">
+                <input id="course-code" class="form-control" type="text" placeholder="Course Code">
+            </div>
+            <div class="col">
+                <input id="unit-load" class="form-control" type="number" placeholder="Unit Load" min="1" max="10">
+            </div>
+            <div class="col">
+                <select id="grade" class="form-control">
+                    <option value="">Grade</option>
+                    <option value="5">A</option>
+                    <option value="4">B</option>
+                    <option value="3">C</option>
+                    <option value="2">D</option>
+                    <option value="1">E</option>
+                    <option value="0">F</option>
+                </select>
+            </div>
+            <div class="col">
+                <input id="add" class="btn btn-primary" type="button" value="Add">
+            </div>
         </div>
-        <button onclick="calculateCGPA()">Calculate CGPA</button>
-        <p>Your CGPA is: <span id="cgpa">-</span></p>
-        <div id="classSection" style="display: none;">
-          <p>Your Class: <span id="studentClass">-</span></p>
+        <table id="table" class="table table-bordered display-none">
+            <thead>
+                <tr>
+                    <th>Course Code</th>
+                    <th>Unit Load</th>
+                    <th>Grade</th>
+                </tr>
+            </thead>
+            <tbody id="tbody"></tbody>
+            <tfoot id="tfoot"></tfoot>
+        </table>
+        <div class="row">
+            <div class="col">
+                <input id="calc-gp" class="btn btn-success display-none" type="button" value="Calc CGP">
+            </div>
+            <div class="col">
+                <input id="clear" class="btn btn-warning display-none" type="button" value="Clear">
+            </div>
         </div>
-      </div>
-    </section>
-    <footer>
-      <a href="tel:+234 (0)90 7033 2721" style="color: black;">09070332721</a>
-      <a href="mailto:ndifrekebassey13@gmail.com" style="color: black;">ndifrekebassey13@gmail.com</a>
-      <p class="text-center">&copy; Eagletech - All Rights Reserved</p>
-    </footer>
+        <div id="result" class="display-none">
+            <h2>Your Results</h2>
+            <p id="total-unit-load"></p>
+            <p id="gpa"></p>
+            <p id="class-div"></p>
+        </div>
+        <button id="toggle-theme" class="btn btn-danger">Switch to Light Mode</button>
+        <p>&copy; 2024 Eagletech. All rights reserved.</p>
+    </div>
     <script src="script.js"></script>
-  </body>
+</body>
 </html>
