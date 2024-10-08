@@ -4,16 +4,25 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CGPA Calculator</title>
-
-    <!-- Link to the custom stylesheet -->
     <link rel="stylesheet" href="style.css">
-
 </head>
 <body>
+    <!-- Dark/Light Mode Toggle -->
+    <div class="toggle-mode">
+        <label class="switch">
+            <input type="checkbox" id="mode-toggle">
+            <span class="slider round"></span>
+        </label>
+        <span id="mode-label"></span>
+    </div>
+
     <div class="wrapper">
         <img class="content-img" src="images/logo.png" alt="Eagletech_Logo">
         <h1>CGPA Calculator</h1>
         
+        <!-- Error Message -->
+        <div id="error-message" class="display-none error-message">Please fill out all fields correctly.</div>
+
         <!-- Input form -->
         <div class="form-row">
             <input id="course-code" type="text" placeholder="Course Code">

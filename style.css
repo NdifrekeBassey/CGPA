@@ -7,7 +7,13 @@ body {
     height: 100vh;
     display: flex;
     justify-content: center;
-    align-items: center;
+    align-items: flex-start; /* Changed from center to flex-start to allow scroll */
+    overflow: auto; /* Allow scroll */
+}
+
+.light-mode {
+    background: linear-gradient(135deg, #f0f0f0, #ffffff);
+    color: #000;
 }
 
 .wrapper {
@@ -19,14 +25,23 @@ body {
     box-shadow: 0 8px 15px rgba(0, 0, 0, 0.5);
     text-align: center;
     color: white;
+    overflow-y: auto; /* This allows inner scrolling when the content grows */
+}
+
+
+.light-mode .wrapper {
+    background: linear-gradient(145deg, #ffffff, #e0e0e0);
+    color: #000;
 }
 
 h1 {
     font-size: 2.5rem;
     margin-bottom: 30px;
-    background: -webkit-linear-gradient(90deg, #ff5e5e, #5e85ff);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
+    background: -webkit-linear-gradient(90deg, #ff5e5e, #5e85ff); /* For Safari and Chrome */
+    -webkit-background-clip: text; /* For Safari and Chrome */
+    background-clip: text; /* Standard property */
+    -webkit-text-fill-color: transparent; /* For Safari and Chrome */
+    color: transparent; /* Fallback for other browsers */
 }
 
 .form-row {
@@ -45,91 +60,74 @@ h1 {
     width: calc(33.33% - 10px);
 }
 
-.form-row input::placeholder {
-    color: #bbb;
-}
-
-.form-row input[type="button"] {
-    width: auto;
-    background: linear-gradient(145deg, #ff5e5e, #ff8e8e);
-    cursor: pointer;
-    transition: all 0.3s ease;
-}
-
-.form-row input[type="button"]:hover {
-    background: linear-gradient(145deg, #ff4040, #ff6a6a);
-}
-
-table {
-    width: 100%;
-    margin-top: 20px;
-    border-collapse: collapse;
-    background-color: rgba(255, 255, 255, 0.1);
-    border-radius: 10px;
-    overflow: hidden;
-}
-
-th, td {
-    padding: 15px;
-    border: 1px solid #444;
-    color: white;
-}
-
-th {
-    background-color: #222;
-    font-weight: bold;
-}
-
-td {
-    background-color: #333;
-}
-
-.btn-primary, .btn-success, .btn-warning, .btn-danger {
-    padding: 12px 25px;
-    border: none;
-    border-radius: 8px;
-    cursor: pointer;
-    transition: all 0.3s ease;
-}
-
-.btn-primary {
-    background: linear-gradient(145deg, #007bff, #2a9df4);
-    color: white;
-}
-
-.btn-primary:hover {
-    background: linear-gradient(145deg, #0056d6, #1e8ee3);
-}
-
-.btn-success {
-    background: linear-gradient(145deg, #28a745, #5bce79);
-    color: white;
-}
-
-.btn-success:hover {
-    background: linear-gradient(145deg, #1d7e34, #4fc064);
-}
-
-.btn-warning {
-    background: linear-gradient(145deg, #ffc107, #ffdf5d);
+.light-mode .form-row input, .light-mode .form-row select {
+    background: linear-gradient(145deg, #e0e0e0, #f0f0f0);
     color: black;
 }
 
-.btn-warning:hover {
-    background: linear-gradient(145deg, #e0a800, #ffcd38);
+.error-message {
+    color: red;
+    font-size: 1.2rem;
+    margin-bottom: 15px;
 }
 
-.btn-danger {
-    background: linear-gradient(145deg, #dc3545, #ff6b72);
-    color: white;
+.toggle-mode {
+    position: absolute;
+    top: 15px;
+    right: 20px;
+    display: flex;
+    align-items: center;
 }
 
-.btn-danger:hover {
-    background: linear-gradient(145deg, #b02a37, #f45c61);
+.switch {
+    position: relative;
+    display: inline-block;
+    width: 60px;
+    height: 34px;
 }
 
-.display-none {
-    display: none;
+.switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    transition: 0.4s;
+}
+
+.slider.round {
+    border-radius: 34px;
+}
+
+.slider.round:before {
+    border-radius: 50%;
+}
+
+input:checked + .slider {
+    background-color: #2196F3;
+}
+
+.slider:before {
+    position: absolute;
+    content: "";
+    height: 26px;
+    width: 26px;
+    left: 4px;
+    bottom: 4px;
+    background-color: white;
+    transition: 0.4s;
+}
+
+input:checked + .slider:before {
+    transform: translateX(26px);
 }
 
 .content-img {
@@ -140,7 +138,6 @@ td {
     border: 2px solid #fff;
 }
 
-/* Mobile responsiveness */
 @media screen and (max-width: 700px) {
     .form-row {
         flex-direction: column;
@@ -154,4 +151,174 @@ td {
     .form-row input[type="button"] {
         width: 100%;
     }
+}
+
+/* Button Styles */
+.btn-primary, .btn-success, .btn-danger, .btn-warning {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 10px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s, box-shadow 0.3s;
+}
+
+.btn-primary {
+    background-color: #007bff;
+    color: #fff;
+}
+
+.btn-primary:hover {
+    background-color: #0056b3;
+    box-shadow: 0 4px 10px rgba(0, 91, 187, 0.4);
+}
+
+.btn-success {
+    background-color: #28a745;
+    color: #fff;
+}
+
+.btn-success:hover {
+    background-color: #1e7e34;
+    box-shadow: 0 4px 10px rgba(30, 126, 52, 0.4);
+}
+
+.btn-danger {
+    background-color: #dc3545;
+    color: #fff;
+}
+
+.btn-danger:hover {
+    background-color: #c82333;
+    box-shadow: 0 4px 10px rgba(200, 35, 51, 0.4);
+}
+
+.btn-warning {
+    background-color: #ffc107;
+    color: #000;
+}
+
+.btn-warning:hover {
+    background-color: #e0a800;
+    box-shadow: 0 4px 10px rgba(224, 168, 0, 0.4);
+}
+
+/* Table Styles */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+    font-size: 1rem;
+    background: linear-gradient(145deg, #222, #444);
+    color: white;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.4);
+    transition: background-color 0.3s;
+}
+
+.light-mode table {
+    background: linear-gradient(145deg, #e0e0e0, #f0f0f0);
+    color: black;
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+}
+
+table thead th {
+    background-color: #333;
+    padding: 15px;
+    text-align: left;
+    font-weight: bold;
+    text-transform: uppercase;
+    color: white;
+}
+
+.light-mode table thead th {
+    background-color: #cccccc;
+    color: black;
+}
+
+table tbody td {
+    padding: 12px 15px;
+    border-bottom: 1px solid #444;
+    text-align: left;
+}
+
+table tbody tr:nth-child(even) {
+    background-color: #333;
+}
+
+.light-mode table tbody tr:nth-child(even) {
+    background-color: #f0f0f0;
+}
+
+table tbody tr:hover {
+    background-color: #007bff;
+    color: white;
+    cursor: pointer;
+}
+
+.light-mode table tbody tr:hover {
+    background-color: #a8d5ff;
+    color: black;
+}
+
+table tfoot td {
+    padding: 15px;
+    background-color: #28a745;
+    color: white;
+    text-align: center;
+    font-size: 1.2rem;
+    font-weight: bold;
+}
+
+.light-mode table tfoot td {
+    background-color: #d4edda;
+    color: #155724;
+}
+
+table button {
+    padding: 5px 10px;
+    border: none;
+    border-radius: 5px;
+    font-size: 0.9rem;
+    cursor: pointer;
+    background-color: #dc3545;
+    color: white;
+    transition: background-color 0.3s;
+}
+
+table button:hover {
+    background-color: #c82333;
+    box-shadow: 0 4px 10px rgba(200, 35, 51, 0.4);
+}
+
+/* Dark Mode Styles for the Dropdown */
+select {
+    background-color: #333;
+    color: white;
+    border: none;
+    border-radius: 10px;
+    padding: 10px;
+    appearance: none; /* Optional: Removes default browser styling (like the arrow) */
+    -webkit-appearance: none; /* For Safari */
+    -moz-appearance: none; /* For Firefox */
+    background-image: url('data:image/svg+xml;charset=US-ASCII,%3Csvg xmlns%3D%22http%3A//www.w3.org/2000/svg%22 width%3D%2210%22 height%3D%2210%22 viewBox%3D%220 0 10 10%22%3E%3Cpath fill%3D%22white%22 d%3D%22M0 3l5 5 5-5z%22/%3E%3C/svg%3E');
+    background-repeat: no-repeat;
+    background-position: right 10px top 50%;
+    background-size: 12px;
+}
+
+select option {
+    background-color: #333; /* Dark background for the options */
+    color: white;
+}
+
+.light-mode select {
+    background-color: #f0f0f0; /* Light mode background */
+    color: black;
+}
+
+.light-mode select option {
+    background-color: #f0f0f0;
+    color: black;
 }

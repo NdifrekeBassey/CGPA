@@ -1,56 +1,49 @@
-# CGPA Calculator
+# 🎓 CGPA Calculator
 
-## Overview
-The CGPA Calculator is a web application designed to help university students calculate their Cumulative Grade Point Average (CGPA) based on their course grades and unit loads. The application provides an intuitive user interface that allows students to input their courses, select grades, and calculate their CGPA with a visual representation of their academic performance.
+## 🌟 Overview
+The **CGPA Calculator** is a simple yet powerful web app designed to help university students quickly calculate their **Cumulative Grade Point Average (CGPA)** based on their grades and unit loads. Whether you're aiming for **First Class Honors** or just tracking your progress, this calculator has you covered!
 
-## Features
-- **User-Friendly Input Form**: Students can add multiple courses along with their corresponding unit loads and grades.
-- **Dynamic Table**: Displays entered courses, unit loads, and grades in a table format.
-- **CGPA Calculation**: Calculates the CGPA based on the inputted grades and unit loads.
-- **Academic Classification**: Determines if the student is a First Class, Second Class Upper Division, Second Class Lower Division, or Third Class based on the calculated CGPA.
-- **Light/Dark Mode Toggle**: Users can switch between light and dark modes for a customized viewing experience.
-- **Responsive Design**: Adapts to different screen sizes for accessibility on various devices.
+## ✨ Features
+- **📝 User-Friendly Input Form**: Enter your course codes, unit loads, and grades easily.
+- **📊 Dynamic Table**: See your courses, unit loads, and grades displayed in a clean, organized table.
+- **🎯 CGPA Calculation**: Instantly compute your CGPA based on entered values.
+- **🏆 Academic Classification**: Automatically determines your academic standing (First Class, Second Class Upper, etc.).
+- **🌗 Light/Dark Mode Toggle**: Personalize your experience with a theme that suits your preference.
+- **📱 Fully Responsive**: Use it on any device—phone, tablet, or computer—thanks to the responsive design.
 
-## File Structure
+## 📁 File Structure
 
-## HTML (`index.html`)
-- The main structure of the webpage, containing the input form for course codes, unit loads, and grades.
-- Includes buttons for adding courses, calculating CGPA, and clearing the form.
-- Displays a table showing the added courses and a footer for copyright information.
+### `index.html`
+- **The heart of the app**: It contains all the HTML elements such as form inputs, buttons, and the dynamic course table.
+- **Key sections include**:
+  - **Form inputs**: Add course code, unit load, and grade with ease.
+  - **Dynamic Table**: Displays all your added courses.
+  - **Action buttons**: For adding courses, calculating CGPA, and clearing the data.
 
-### Key Sections:
-1. **Form Inputs**: Fields for entering course code, unit load, and grade.
-2. **Dynamic Table**: A table that displays the courses added by the user.
-3. **Buttons**: Buttons to perform actions like adding courses, calculating CGPA, and clearing the inputs.
+### `script.js`
+- **Brains behind the app**: This script handles the logic of adding courses, calculating the CGPA, and showing the result.
+- **Key functions**:
+  - **Add courses**: Gathers inputs and dynamically adds them to the table.
+  - **Calculate CGPA**: Computes the CGPA based on unit loads and grade points.
+  - **Show results**: Displays the CGPA and your academic classification (e.g., First Class).
 
-## JavaScript (`script.js`)
-- Handles the logic for adding courses, calculating CGPA, and updating the user interface.
-- Uses event listeners to respond to button clicks.
-- Contains functions to calculate total unit loads, compute the CGPA, and determine the academic classification.
+### `style.css`
+- **Looks that impress**: Styles the entire app with sleek, modern visuals. Supports both **dark** and **light** themes.
+- **Key styles**:
+  - **Dark Mode**: Makes the interface easier on the eyes in low light.
+  - **Light Mode**: Bright and clean for a classic feel.
+  - **Responsive Design**: Automatically adjusts to fit any screen size for better accessibility.
 
-### Key Functions:
-- **Adding Courses**: Collects input data and appends it to the course table.
-- **Calculating CGPA**: Computes the CGPA by dividing the total grade points by the total unit loads.
-- **Displaying Results**: Updates the table and footer with the results.
+## 💻 Usage
+1. **Open the app**: Just launch `index.html` in your browser.
+2. **Enter your details**: Input course codes, unit loads, and grades for each course.
+3. **Add to the table**: Click "Add" to add the course details to the table.
+4. **Calculate CGPA**: Once you’ve entered all courses, hit **"Calc CGPA"** to see your CGPA and academic standing.
+5. **Clear data**: Use the **"Clear"** button to reset everything and start fresh.
+6. **Switch themes**: Toggle between **Light** and **Dark** mode for a personalized look and feel.
 
-## CSS (`style.css`)
-- Defines the styling for the application, ensuring a cohesive and modern look.
-- Supports both dark mode and light mode styling.
-- Utilizes Flexbox for responsive design, allowing elements to adjust based on screen size.
+## 🌐 Live Demo
+Want to see it in action? 🚀 You can launch this CGPA Calculator directly in your web browser!
 
-### Key Styles:
-- **Dark Mode**: Applies dark backgrounds and light text for better readability in low-light environments.
-- **Light Mode**: Provides a light background with dark text for a more traditional view.
-- **Button and Input Styles**: Consistent styling for buttons and input fields to enhance usability.
-
-## Usage
-1. Open `index.html` in a web browser.
-2. Enter the course code, unit load, and grade for each course.
-3. Click "Add" to append the course to the table.
-4. Click "Calc CGPA" to calculate and display your CGPA and academic classification.
-5. Use "Clear" to reset the form and start over.
-6. Toggle between light and dark modes for your preferred viewing experience.
-
-## Author
-Eagletech - Soaring through Innovation
-
+## 👨‍💻 Author
+Made with ❤️ by **Eagletech** — _Soaring through Innovation!_ ✈️
